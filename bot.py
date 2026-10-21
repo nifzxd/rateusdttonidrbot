@@ -110,6 +110,15 @@ async def kirim_update(context: ContextTypes.DEFAULT_TYPE):
 def main():
     app = Application.builder().token(TOKEN_BOT).build()
 
+    # Guard: pastikan JobQueue tersedia sebelum dipakai
+    # (fix untuk crash "Application.job_queue is None")
+    if app.job_queue is None:
+        logger.critical(
+            "JobQueue TIDAK tersedia! Install: "
+            "pip install 'python-telegram-bot[job-queue]'"
+        )
+        raise SystemExit(1)
+
     # Jadwalkan job, TIDAK ada handler pesan user
     app.job_queue.run_repeating(
         kirim_update,
@@ -120,3 +129,7 @@ def main():
     logger.info("Bot channel-only berjalan...")
     # allowed_updates=[] → bot tidak menerima update dari chat pribadi/group
     app.run_polling(allowed_updates=[])
+
+
+if __name__ == "__main__":
+    main()

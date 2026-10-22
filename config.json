@@ -1,0 +1,14 @@
+{
+  "bot_token": "8843649809:AAGmXnDcyfJNqQbMZ8go83PfkCrt664qoyc",
+  "channel_id": "@ratetonusdtidr",
+  "interval_detik": 60,
+  "kirim_hanya_jika_berubah": false,
+  "zona_waktu": "Asia/Jakarta",
+  "coins": {
+    "ton": "the-open-network",
+    "usdt": "tether"
+  },
+  "vs_currency": "idr",
+  "timeout_http": 10.0,
+  "maks_percobaan": 3
+}
